@@ -40,7 +40,24 @@ namespace WarlightIRC.Core
                     }
 
                     break;
-                
+
+                case "team":
+                    string institute = nbrOfArgs < 2 ? "tweakers" : args[1];
+                    ctx = new WarlightContext();
+                    var dataList = ctx.GetRankingsInInstitute(institute);
+                    if (dataList.Any())
+                    {
+                        foreach (var entry in dataList.Take(5))
+                        {
+                            SendMsg(channel, string.Format("8,1Warlight 4» 7{0}: 08{1} {2} 7is ranked 08{3}7/08{4} 7with score 08{5}7.", entry.Name, entry.Bot, entry.BotRevision, entry.Rank, entry.Players, entry.Score));
+                        }
+                    }
+                    else
+                    {
+                        SendMsg(channel, "8,1Warlight 4» 7Institute not found.");
+                    }
+
+                    break;
             }
 
 	    }
