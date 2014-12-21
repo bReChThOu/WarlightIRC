@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using WarlightIRC.Core;
 
 namespace WarlightIRC
 {
@@ -9,10 +10,9 @@ namespace WarlightIRC
         {
             try
             {
-                WarlightBot rt = new WarlightBot("irc.tweakers.net", 6667);
-                rt.SetNick("WarlightBot");
-                rt.JoinChannel("#brechthou");
-                rt.Connect();
+                var bot = new WarlightBot("irc.tweakers.net", 6667);
+                bot.JoinChannel("#brechthou");
+                bot.Connect();
             }
             catch (Exception ioe)
             {

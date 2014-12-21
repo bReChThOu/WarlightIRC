@@ -9,19 +9,7 @@ namespace WarlightIRC
 {
     public class WarlightContext
     {
-        private NetworkStream netStream;
-        private StreamReader input;
-        private StreamWriter output;
         private String hostname = "http://theaigames.com";
-        private int port = 80;
-        private void SendRawLine(String line)
-        {
-            output.Write(line + "\r\n");
-        }
-        private void SendCrlf()
-        {
-            output.Write("\r\n");
-        }
 
         public RankingData GetRanking(string player)
         {

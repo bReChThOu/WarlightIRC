@@ -5,7 +5,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 
-namespace WarlightIRC
+namespace WarlightIRC.Core
 {
     public abstract class Bot
     {
@@ -43,7 +43,7 @@ namespace WarlightIRC
 
         private List<String> channels = new List<String>();
 
-        public Bot(String hostname, int port)
+        protected Bot(String hostname, int port)
         {
             this.hostname = hostname;
             this.port = port;
@@ -131,13 +131,14 @@ namespace WarlightIRC
         }
 
 
-        protected void JoinChannel(String channel)
+        public void JoinChannel(String channel)
         {
             if (!channels.Contains(channel))
             {
                 channels.Add(channel);
             }
         }
+
         private void JoinChannels()
         {
             for (int i = 0; i < channels.Count; i++)
@@ -388,6 +389,7 @@ namespace WarlightIRC
             //onQuit(userhost, quitMessage);
 
         }
+
         protected String GetNick()
         {
             return this.nick;
